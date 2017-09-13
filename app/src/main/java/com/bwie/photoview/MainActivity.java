@@ -45,16 +45,16 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                //强制转换为文档类型
+
 
                 try {
-                    Document   doc = Jsoup.connect(url).get();
-                    //获取img标签
-                    Elements all = doc.getElementsByTag("img");
+                    Document   doc = Jsoup.connect(url).get(); //强制转换为文档类型
+
+                    Elements all = doc.getElementsByTag("img");  //获取img标签
 
                     for (Element img : all) {
                      //   System.out.println("xxx"+img.attr("src"));
-                       list.add(img.attr("src"));
+                       list.add(img.attr("src"));//读取img标签中的src属性，获取图片
 
                     }
                 //    System.out.println("xxxx"+list.size());
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                wv.loadUrl("javascript:(function(){" +
+                wv.loadUrl("javascript:(function(){" +//给html文件添加图片点击事件
                         "var objs = document.getElementsByTagName(\"img\"); " +
                         "for(var i=0;i<objs.length;i++)  " +
                         "{"

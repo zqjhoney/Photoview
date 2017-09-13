@@ -31,7 +31,6 @@ public class DescActivity extends AppCompatActivity {
         vp = (ViewPager) findViewById(R.id.vp);
         Intent intent=getIntent();
         if(intent.getExtras()!= null){
-
             System.out.println("xxxxxxxx"+"判断传值不为空");
             list= (ArrayList<String>) intent.getExtras().getSerializable("imgs");
         }
@@ -58,14 +57,14 @@ public class DescActivity extends AppCompatActivity {
             View view=View.inflate(DescActivity.this,R.layout.item,null);
             PhotoView pv=view.findViewById(R.id.pv);
             Glide.with(DescActivity.this).load(list.get(position)).into(pv);
-            pv.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
+            pv.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {//给图片设置点击事件，点击退出
                 @Override
                 public void onPhotoTap(View view, float x, float y) {
                     DescActivity.this.finish();
                 }
             });
 
-            container.addView(view);
+            container.addView(view);//添加父类元素
             return view;
         }
 
